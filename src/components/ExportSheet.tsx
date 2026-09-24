@@ -1,0 +1,7 @@
+import { ChevronRight, FileSpreadsheet, FileText, Printer, Share2, X } from 'lucide-react'
+
+type Props = { onClose: () => void; onExcel: () => void; onPrint: () => void; onShare: () => void }
+
+export function ExportSheet({ onClose, onExcel, onPrint, onShare }: Props) {
+  return <div className="modal-backdrop" onClick={onClose}><section className="export-sheet" onClick={(event) => event.stopPropagation()}><div className="sheet-handle" /><div className="sheet-header"><div><p className="eyebrow">LOCAL ACTIONS</p><h2>Export &amp; Share</h2></div><button className="icon-button" onClick={onClose} aria-label="Close export menu"><X size={18} /></button></div><div className="export-options"><button onClick={onExcel}><span className="option-icon"><FileSpreadsheet size={20} /></span><span><strong>Download as Excel Sheet (.xlsx)</strong><small>Separate tabs automatically grouped by age bracket.</small></span><ChevronRight size={18} /></button><button onClick={onPrint}><span className="option-icon"><Printer size={20} /></span><span><strong>Export Printable Cutting Sheet (PDF)</strong><small>Clean format layout ready for paper or cutting table.</small></span><ChevronRight size={18} /></button><button onClick={onShare}><span className="option-icon"><Share2 size={20} /></span><span><strong>Send via WhatsApp</strong><small>Share the complete grouped measurement summary.</small></span><ChevronRight size={18} /></button></div><p className="sheet-note"><FileText size={13} /> Files are compiled locally on this device.</p></section></div>
+}
